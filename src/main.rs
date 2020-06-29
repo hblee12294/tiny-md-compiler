@@ -1,10 +1,29 @@
-fn usage() {
-    let mut the_version = env!("CARGO_PKG_VERSION");
-    the_version = "0.2";
+fn get_title() -> String {
+    let mut the_title = String::from(env!("CARGO_PKG_NAME"));
+    the_title.push_str(" (v");
+    the_title.push_str(env!("CARGO_PKG_VERSION"));
+    the_title.push_str("), ");
+    the_title.push_str(env!("CARGO_PKG_DESCRIPTION"));
 
-    println!("tinymd, a markdown compiler written by Hblee");
-    println!("Version {}", the_version);
+    the_title
 }
+
+fn parse_markdown_file() {}
+
+fn print_short_banner() {
+    println!("{}", get_title());
+    println!(
+        "Written by: {}\nHomepage: {}\nUsage: tinymd <somefile>.md\n",
+        env!("CARGO_PKG_AUTHORS"),
+        env!("CARGO_PKG_HOMEPAGE")
+    );
+}
+
+fn print_long_banner() {
+    print_short_banner();
+}
+
+fn usage() {}
 
 fn main() {
     usage();
